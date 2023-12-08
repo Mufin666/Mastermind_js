@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+    Lista kolorow: <br>
+    <div id="color_list"></div>
     <form name="kolor">
         <input type="text" id="k1" placeholder="kolor 1"> <br>
         <input type="text" id="k2" placeholder="kolor 2"><br>
         <input type="text" id="k3" placeholder="kolor 3"><br>
         <input type="text" id="k4" placeholder="kolor 4"><br>
-        <input type="button" value="submit" id="submit"> <input type="reset" value="reset">
+        <input type="button" value="sprawdz" id="submit"> <input type="reset" value="reset">
     </form>
     <div id="kolorki"></div><br>
     <div id="num1"></div><br>
@@ -24,6 +27,10 @@
        
         //colors
         const colors = ['red','blue','green','pink','purple','yellow','orange','black','white','aqua'];
+
+        //displaying possible colors
+        document.getElementById("color_list").innerHTML = colors;
+
 
         //shuffling array
         let shuffeld_colors = colors.slice().sort(() => Math.random() -0.5);
@@ -115,7 +122,9 @@
                 document.getElementById("num3").innerHTML = "";
                 document.getElementById("num4").innerHTML = "";
                 //display if lost
-                document.getElementById("odp").innerHTML = "PRZEGRAŁES skonczyly ci sie proby" ;
+                document.getElementById("odp").innerHTML =
+                    "PRZEGRAŁES, skonczyly ci sie proby. prawidlowe" +
+                    "kolory to: " + col1 + " " + col2 + " "+ col3 + " "+ col4 + " ";
             }
         }
 
