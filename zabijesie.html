@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="kolor">
+        <input type="text" id="k1" placeholder="kolor 1"> <br>
+        <input type="text" id="k2" placeholder="kolor 2"><br>
+        <input type="text" id="k3" placeholder="kolor 3"><br>
+        <input type="text" id="k4" placeholder="kolor 4"><br>
+        <input type="button" value="submit" id="submit"> <input type="reset" value="reset">
+    </form>
+    <div id="kolorki"></div><br>
+    <div id="num1"></div><br>
+    <div id="num2"></div><br>
+    <div id="num3"></div><br>
+    <div id="num4"></div><br>
+    <div id="odp"></div>
+
+    <script>
+       
+        //colors
+        const colors = ['red','blue','green','pink','purple','yellow','orange','black','white','aqua'];
+
+        //shuffling array
+        let shuffeld_colors = colors.slice().sort(() => Math.random() -0.5);
+
+        //selecting 4 first colors
+        rand_colors = shuffeld_colors.slice(0,4);
+
+
+        //choosing colors
+        let col1 = rand_colors[0];
+        let col2 = rand_colors[1];
+        let col3 = rand_colors[2];
+        let col4 = rand_colors[3];
+
+        //attempts
+        let attempts = 5;
+
+        document.getElementById("kolorki").innerHTML = col1 + col2 + col3 + col4;
+
+        function sprawdz(){
+             //person choices
+        let person_choice1 = document.getElementById("k1").value;
+        let person_choice2 = document.getElementById("k2").value;
+        let person_choice3 = document.getElementById("k3").value;
+        let person_choice4 = document.getElementById("k4").value;
+            if(attempts > 0){
+                //display left attempts
+                document.getElementById("odp").innerHTML = attempts;
+                if(person_choice1 == col1 && person_choice2 == col2 && person_choice3 == col3 && person_choice4 == col4 ){
+                    //reset divs
+                    document.getElementById("num1").innerHTML = "";
+                    document.getElementById("num2").innerHTML = "";
+                    document.getElementById("num3").innerHTML = "";
+                    document.getElementById("num4").innerHTML = "";
+                    //display if won
+                    document.getElementById("odp").innerHTML = "WYGRAŁEŚ"
+                }
+                else{
+                    //pierwszy
+                if(person_choice1 == col1 ){
+                    document.getElementById("num1").innerHTML = "Masz dobrze pierwszy kolor";
+                    }
+                else if(person_choice1 == col2 || person_choice1 == col3 || person_choice1 == col4 ){
+                    document.getElementById("num1").innerHTML = "Masz dobry pierwszy kolor na złej pozycji";
+                }
+                else{
+                    document.getElementById("num1").innerHTML = "pierwszy kolor nie jest prawidlowy";
+                }
+                //drugi
+                if(person_choice2 == col2 ){
+                    document.getElementById("num2").innerHTML = "Masz dobrze drugi kolor"
+                    }
+                else if(person_choice2 == col1 || person_choice2 == col3 || person_choice2 == col4 ){
+                    document.getElementById("num2").innerHTML = "Masz dobry drugi kolor na złej pozycji"
+                }
+                else{
+                    document.getElementById("num2").innerHTML = "drugi kolor nie jest prawidlowy";
+                }
+                //trzeci
+                if(person_choice3 == col3 ){
+                    document.getElementById("num3").innerHTML = "Masz dobrze trzeci kolor"
+                    }
+                else if(person_choice3 == col2 || person_choice3 == col1 || person_choice3 == col4 ){
+                    document.getElementById("num3").innerHTML = "Masz dobry trzeci kolor na złej pozycji"
+                }
+                else{
+                    document.getElementById("num3").innerHTML = "trzeci kolor nie jest prawidlowy";
+                }
+                //czwarty
+                if(person_choice4 == col4 ){
+                    document.getElementById("num4").innerHTML = "Masz dobrze czwarty kolor"
+                    }
+                else if(person_choice4 == col2 || person_choice4 == col3 || person_choice4 == col1 ){
+                    document.getElementById("num4").innerHTML = "Masz dobry czwarty kolor na złej pozycji"
+                }
+                else{
+                    document.getElementById("num4").innerHTML = "czwarty kolor nie jest prawidlowy";
+                }
+                 }
+
+                attempts --;
+         
+             }
+             //koniec prob
+            else{
+                //reset divs
+                document.getElementById("num1").innerHTML = "";
+                document.getElementById("num2").innerHTML = "";
+                document.getElementById("num3").innerHTML = "";
+                document.getElementById("num4").innerHTML = "";
+                //display if lost
+                document.getElementById("odp").innerHTML = "PRZEGRAŁES skonczyly ci sie proby" ;
+            }
+        }
+
+        //event listener
+        document.getElementById("submit").addEventListener('click', sprawdz)
+    </script>
+
+
+
+</body>
+</html>

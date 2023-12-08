@@ -1,0 +1,26 @@
+body{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 0px;
+}
+
+
+input[type="text"]{
+    background: rgba(223, 211, 211, 0.3);;
+    color: rgba(0, 0, 0, 0.8);
+    border: 2px solid black;
+}
+
+input[type="text"]:focus{
+    background: rgb(71, 65, 65);
+    color: aquamarine;
+}
+
+input[type="button"]:hover{
+    background-color:bisque ;
+    border: 0.5px dotted black;
+}
+
+input[type="reset"]:hover{
+    background-color:bisque ;
+    border: 0.5px dotted black;
+}
