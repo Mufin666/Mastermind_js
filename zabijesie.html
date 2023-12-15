@@ -88,6 +88,10 @@
                     document.getElementById('odp').style.color = "green";
                     //display if won
                     document.getElementById("odp").innerHTML = "WYGRAŁEŚ"
+                    //reloading site after win(5.5s)
+                    setTimeout(function() {
+                        location.reload(true);
+                        }, 5500);
                 }
                 else{
                     //pierwszy
